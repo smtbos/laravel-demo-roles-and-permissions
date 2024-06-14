@@ -46,6 +46,17 @@ class DatabaseSeeder extends Seeder
 
         $admin->assignRole('Admin');
 
+        $admin->notes()->createMany([
+            [
+                'title' => 'First Note by Admin',
+                'content' => 'This is the first note',
+            ],
+            [
+                'title' => 'Second Note by Admin',
+                'content' => 'This is the second note',
+            ],
+        ]);
+
         $user = User::create([
             'name' => 'User',
             'email' => 'user@user.com',
@@ -53,5 +64,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $user->assignRole('User');
+
+        $user->notes()->createMany([
+            [
+                'title' => 'First Note by User',
+                'content' => 'This is the first note',
+            ],
+            [
+                'title' => 'Second Note by User',
+                'content' => 'This is the second note',
+            ],
+        ]);
     }
 }
